@@ -260,19 +260,42 @@ const getBranchCommits = async ({
 
 
 
+// cron.schedule(
+//     '10 18 * * *',
+//     () => {
+//         console.log("api is ca;lled")
+//         login()
+//         saveDraft()
+//         getBranchCommits()
+//     },
+//     {
+//         timezone: 'Asia/Kolkata',
+//     }
+// );
+
+console.log("Server started at:", new Date().toISOString());
+
 cron.schedule(
-    '10 18 * * *',
-    () => {
-        console.log("api is ca;lled")
-        login()
-        saveDraft()
-        getBranchCommits()
+    '34 18 * * *',
+    async () => {
+        console.log("✅ Cron triggered at:", new Date().toISOString());
+
+        try {
+            await login();
+            await saveDraft();
+            await getBranchCommits();
+
+            console.log("✅ All tasks completed");
+        } catch (error) {
+            console.error("❌ Cron task failed:", error);
+        }
     },
     {
         timezone: 'Asia/Kolkata',
     }
 );
 
+console.log("✅ Cron job registered");
 
 
 
