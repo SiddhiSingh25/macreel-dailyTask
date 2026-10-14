@@ -261,7 +261,7 @@ const getBranchCommits = async ({
 
 
 cron.schedule(
-    '*/5 * * * *',
+    '10 18 * * *',
     () => {
         console.log("api is ca;lled")
         login()
