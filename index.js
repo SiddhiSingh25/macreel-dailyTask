@@ -276,7 +276,7 @@ const getBranchCommits = async ({
 console.log("Server started at:", new Date().toISOString());
 
 cron.schedule(
-    '34 18 * * *',
+    '42 18 * * *',
     async () => {
         console.log("✅ Cron triggered at:", new Date().toISOString());
 
